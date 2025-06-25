@@ -4,50 +4,56 @@ const games = [
   {
     id: "monster-math",
     title: "Monster Math Battle 👾",
-    description: "Feed hungry monsters by solving math!",
+    description: "AI helps you solve math just like calculators!",
     icon: "👾",
     color: "from-green-400 to-lime-400",
     working: true,
+    aiExample: "Calculators & Math Apps",
   },
   {
     id: "space-quiz",
     title: "Space Explorer 🚀",
-    description: "Answer questions to fly through space!",
+    description: "AI helps answer questions like search engines!",
     icon: "🚀",
     color: "from-blue-400 to-indigo-400",
     working: true,
+    aiExample: "Google & Siri",
   },
   {
     id: "animal-sounds",
     title: "Animal Sound Detective 🐾",
-    description: "Guess animals by their sounds!",
+    description: "AI identifies sounds like nature apps!",
     icon: "🦁",
     color: "from-orange-400 to-yellow-400",
     working: true,
+    aiExample: "Shazam & Nature Apps",
   },
   {
     id: "coming-soon-1",
     title: "Rainbow Artist 🌈",
-    description: "Coming soon! Draw magical rainbows!",
+    description: "Coming soon! AI helps with creative apps!",
     icon: "🎨",
     color: "from-pink-400 to-purple-400",
     working: false,
+    aiExample: "Drawing Apps",
   },
   {
     id: "coming-soon-2",
     title: "Dance Party 💃",
-    description: "Coming soon! Copy dance moves!",
+    description: "Coming soon! AI recognizes movements!",
     icon: "💃",
     color: "from-red-400 to-pink-400",
     working: false,
+    aiExample: "Motion Games",
   },
   {
     id: "coming-soon-3",
     title: "Treasure Hunt 🏴‍☠️",
-    description: "Coming soon! Find hidden treasures!",
+    description: "Coming soon! AI gives smart clues!",
     icon: "💎",
     color: "from-amber-400 to-orange-400",
     working: false,
+    aiExample: "GPS & Maps",
   },
 ]
 
@@ -59,7 +65,7 @@ const GameMenu = ({ onSelectGame }) => {
         const selectedMonster = monsters[Math.floor(Math.random() * monsters.length)]
         return {
           monster: selectedMonster,
-          question: "2 + 2", // Will be updated based on difficulty
+          question: "2 + 2",
           answer: 4,
           monsterHunger: 100,
           score: 0,
@@ -68,7 +74,7 @@ const GameMenu = ({ onSelectGame }) => {
 
       case "space-quiz":
         return {
-          question: "What planet do we live on?", // Will be updated based on difficulty
+          question: "What planet do we live on?",
           answer: "EARTH",
           options: ["EARTH", "MARS", "MOON", "SUN"],
           rocketPosition: 0,
@@ -96,9 +102,34 @@ const GameMenu = ({ onSelectGame }) => {
   return (
     <div className="flex-1 p-4 overflow-y-auto">
       <div className="text-center mb-6">
-        <h2 className="text-4xl font-bold text-white mb-2 animate-bounce">🎮 SUPER FUN GAMES! 🎮</h2>
-        <p className="text-white/80 text-xl">Choose your adventure and let's have a blast!</p>
+        <h2 className="text-4xl font-bold text-white mb-2 animate-bounce">🤖 AI LEARNING GAMES! 🤖</h2>
+        <p className="text-white/80 text-xl">Discover how AI helps you every day!</p>
         <div className="text-6xl animate-pulse mt-2">🌟✨🎉✨🌟</div>
+      </div>
+
+      {/* AI Daily Life Examples */}
+      <div className="mb-8 bg-gradient-to-r from-cyan-400/20 to-blue-400/20 backdrop-blur-sm rounded-3xl p-6 border-2 border-cyan-400/30">
+        <h3 className="text-2xl font-bold text-white mb-4 text-center">🤖 AI Helps You Every Day! 🤖</h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-white/90">
+          <div className="text-center p-3 bg-white/10 rounded-2xl">
+            <div className="text-3xl mb-2">📱</div>
+            <p className="font-semibold">Phone Assistant</p>
+            <p className="text-sm">Siri, Google Assistant</p>
+          </div>
+          <div className="text-center p-3 bg-white/10 rounded-2xl">
+            <div className="text-3xl mb-2">🎵</div>
+            <p className="font-semibold">Music Apps</p>
+            <p className="text-sm">Spotify, YouTube Music</p>
+          </div>
+          <div className="text-center p-3 bg-white/10 rounded-2xl">
+            <div className="text-3xl mb-2">🗺️</div>
+            <p className="font-semibold">Maps & Navigation</p>
+            <p className="text-sm">Google Maps, Waze</p>
+          </div>
+        </div>
+        <p className="text-white text-center mt-4 text-lg">
+          🌟 Just like how I help you in these games, AI helps millions of people every day! 🌟
+        </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
@@ -130,7 +161,10 @@ const GameMenu = ({ onSelectGame }) => {
                 {game.icon}
               </div>
               <h3 className="text-xl font-bold text-white mb-3 group-hover:text-yellow-200">{game.title}</h3>
-              <p className="text-white/90 text-sm leading-relaxed">{game.description}</p>
+              <p className="text-white/90 text-sm leading-relaxed mb-2">{game.description}</p>
+              <div className="text-white/80 text-xs bg-white/20 rounded-full px-3 py-1 inline-block">
+                Like: {game.aiExample}
+              </div>
               {game.working && (
                 <div className="mt-3 text-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   🎯🎪🎊
@@ -150,29 +184,32 @@ const GameMenu = ({ onSelectGame }) => {
 
       <div className="mt-10 text-center">
         <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 backdrop-blur-sm rounded-3xl p-6 max-w-4xl mx-auto border-2 border-white/20">
-          <p className="text-white text-2xl font-bold mb-4">🤖 Buddy's New Super Powers! 🤖</p>
+          <p className="text-white text-2xl font-bold mb-4">🤖 How AI Buddy Helps You Learn! 🤖</p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-white/90">
             <div className="flex flex-col items-center space-y-2 p-3 bg-white/10 rounded-2xl">
               <span className="text-3xl">⏰</span>
-              <span className="font-semibold">Auto Hints</span>
-              <span className="text-sm">Pops up after 15 seconds!</span>
+              <span className="font-semibold">Smart Timing</span>
+              <span className="text-sm">Helps when you need it!</span>
             </div>
             <div className="flex flex-col items-center space-y-2 p-3 bg-white/10 rounded-2xl">
               <span className="text-3xl">🎯</span>
-              <span className="font-semibold">3 Difficulty Levels</span>
-              <span className="text-sm">Easy, Medium, Hard!</span>
+              <span className="font-semibold">Perfect Level</span>
+              <span className="text-sm">Adjusts to your skill!</span>
             </div>
             <div className="flex flex-col items-center space-y-2 p-3 bg-white/10 rounded-2xl">
-              <span className="text-3xl">🔄</span>
-              <span className="font-semibold">New Questions</span>
-              <span className="text-sm">Never get stuck!</span>
+              <span className="text-3xl">💡</span>
+              <span className="font-semibold">Smart Hints</span>
+              <span className="text-sm">Just the right clue!</span>
             </div>
             <div className="flex flex-col items-center space-y-2 p-3 bg-white/10 rounded-2xl">
               <span className="text-3xl">🎉</span>
-              <span className="font-semibold">Smart Help</span>
-              <span className="text-sm">Perfect guidance!</span>
+              <span className="font-semibold">Encouragement</span>
+              <span className="text-sm">Celebrates your success!</span>
             </div>
           </div>
+          <p className="text-white text-center mt-4 text-lg">
+            🌟 This is exactly how AI helps people in real life - by being smart, helpful, and encouraging! 🌟
+          </p>
         </div>
       </div>
     </div>
